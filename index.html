@@ -49,10 +49,17 @@
     .map-tools { display:flex; flex-wrap:wrap; gap:8px; }
     .legend-chip { border:1px solid var(--line); border-radius:999px; padding:5px 10px; font-size:12px; background:#fff; }
 
-    .map-wrap { position:relative; border:1px solid var(--line); border-radius:12px; overflow:hidden; min-height:500px; }
-    .map-wrap img { width:100%; height:500px; object-fit:cover; display:block; }
+    .map-wrap { position:relative; border:1px solid var(--line); border-radius:12px; overflow:hidden; min-height:560px; }
+    .map-wrap img { width:100%; height:560px; object-fit:cover; display:block; }
 
     .dot { position:absolute; border-radius:999px; border:1px solid rgba(0,0,0,.92); box-shadow:0 6px 14px rgba(0,0,0,.2); opacity:.92; }
+    .dot.is-selected { outline:3px solid rgba(244,0,9,.28); outline-offset:3px; z-index:5; }
+    .outlet-popover { position:absolute; left:35px; top:-90px; width:315px; padding:12px; border:1px solid var(--line); border-left:4px solid var(--golden); border-radius:12px; background:#fff; box-shadow:0 14px 34px rgba(17,17,17,.18); color:var(--txt); font-size:12px; line-height:1.35; z-index:10; }
+    .outlet-popover h4 { margin:0 0 8px; font-size:14px; }
+    .outlet-popover .match-row { display:flex; justify-content:space-between; gap:10px; margin:5px 0; }
+    .outlet-popover .match-row span:first-child { color:var(--muted); }
+    .outlet-popover a { color:var(--golden); font-weight:700; text-decoration:none; }
+    .outlet-popover ul { margin:8px 0 0; padding-left:16px; }
     .others { background: var(--others); }
     .bronze { background: var(--bronze); }
     .silver { background: var(--silver); }
@@ -138,7 +145,7 @@
     <section class="layout"> 
       <article class="card map-card">
         <div class="map-header">
-          <strong>Outlet Opportunity Map</strong>
+          <strong>Outlet opportunity map</strong>
           <div class="map-tools">
             <div class="legend-chip"><span style="color:var(--others)">●</span> Others</div>
             <div class="legend-chip"><span style="color:var(--bronze)">●</span> Bronze</div>
@@ -148,14 +155,25 @@
           </div>
         </div>
         <div class="map-wrap">
-          <img src="assets/sydney.jgp" alt="Sydney map" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='assets/sydney-map-demo.svg';}else{this.src='assets/sydney-map-demo.svg';}" data-fallback="assets/sydney1.jpg" />
+          <img src="assets/sydney1.jpg" alt="Sydney map" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='assets/sydney-map-demo.svg';}else{this.src='assets/sydney-map-demo.svg';}" data-fallback="assets/sydney.jpg" />
           <div class="dot others d1" title="Others"></div><div class="dot bronze d2" title="Bronze"></div>
           <div class="dot silver d3" title="Silver"></div><div class="dot others d4" title="Others"></div>
           <div class="dot golden d5" title="Golden"></div><div class="dot bronze d6" title="Bronze"></div>
-          <div class="dot others d7" title="Others"></div><div class="dot silver d8" title="Silver"></div>
+          <div class="dot others d7" title="Others"></div><div class="dot silver d8 is-selected" title="Silver">
+            <div class="outlet-popover" role="dialog" aria-label="Selected outlet social intelligence">
+              <h4>Kin Yum — Social intelligence</h4>
+              <div class="match-row"><span>Outlet/page name match</span><strong>92%</strong></div>
+              <div class="match-row"><span>Geo / postcode match</span><strong>Sydney 2000</strong></div>
+              <div class="match-row"><span>Business profiles</span><a href="#">Facebook / Instagram</a></div>
+              <ul>
+                <li>14 mentions with Coke / competitor terms</li>
+                <li>6 tagged-location posts in the last 30 days</li>
+                <li>Menu references: Coke Zero, Fanta, combo drinks</li>
+                <li>Local audience engagement: 3.8% avg interaction</li>
+              </ul>
+            </div>
+          </div>
           <div class="dot others d9" title="Others"></div><div class="dot golden d10" title="Golden"></div>
-          <div class="dot others d11" title="Others"></div><div class="dot golden d12" title="Golden"></div>
-          <div class="dot others d13" title="Others"></div><div class="dot others d14" title="Others"></div>
         </div>
       </article>
 
